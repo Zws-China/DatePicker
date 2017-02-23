@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NSDate+Extension.h"
 
 typedef enum{
     DateStyleShowYearMonthDayHourMinute  = 0,

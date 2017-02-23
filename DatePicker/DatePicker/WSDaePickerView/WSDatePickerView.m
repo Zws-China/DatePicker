@@ -7,7 +7,6 @@
 //
 
 #import "WSDatePickerView.h"
-#import "NSDate+Extension.h"
 #import "UIView+Extension.h"
 
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
