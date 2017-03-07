@@ -9,6 +9,7 @@
 #import "WSDatePickerView.h"
 #import "UIView+Extension.h"
 
+
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 #define kPickerSize self.datePicker.frame.size
@@ -39,6 +40,7 @@ typedef void(^doneBlock)(NSDate *);
     NSInteger preRow;
     
     NSDate *_startDate;
+
 }
 @property (weak, nonatomic) IBOutlet UIView *buttomView;
 @property (weak, nonatomic) IBOutlet UILabel *showYearView;
@@ -76,7 +78,6 @@ typedef void(^doneBlock)(NSDate *);
 }
 
 -(void)setupUI {
-
     self.buttomView.layer.cornerRadius = 10;
     self.buttomView.layer.masksToBounds = YES;
     //self.themeColor = [UIColor colorFromHexRGB:@"#f7b639"];
@@ -149,7 +150,7 @@ typedef void(^doneBlock)(NSDate *);
     }
     for (int i=0; i<nameArr.count; i++) {
         CGFloat labelX = kPickerSize.width/(nameArr.count*2)+18+kPickerSize.width/nameArr.count*i;
-        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(labelX, self.showYearView.frame.size.height/2-15, 15, 15)];
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(labelX, self.showYearView.frame.size.height/2-15/2.0, 15, 15)];
         label.text = nameArr[i];
         label.textAlignment = NSTextAlignmentCenter;
         label.font = [UIFont systemFontOfSize:14];
@@ -441,7 +442,7 @@ typedef void(^doneBlock)(NSDate *);
     }
     
     _startDate = self.scrollToDate;
-
+    
 }
 
 -(void)yearChange:(NSInteger)row {
@@ -495,6 +496,7 @@ typedef void(^doneBlock)(NSDate *);
         [self removeFromSuperview];
     }];
 }
+
 
 
 
@@ -618,6 +620,7 @@ typedef void(^doneBlock)(NSDate *);
     _themeColor = themeColor;
     self.doneBtn.backgroundColor = themeColor;
 }
+
 
 -(void)setDatePickerStyle:(WSDateStyle)datePickerStyle {
     _datePickerStyle = datePickerStyle;

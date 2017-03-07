@@ -31,14 +31,23 @@
 }
 
 - (void)selectAction:(UIButton *)btn {
-    
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithCompleteBlock:^(NSDate *startDate) {
-        NSString *date = [startDate stringWithFormat:@"yyyy-MM-dd HH:mm"];
-        NSLog(@"时间： %@",date);
-        [btn setTitle:date forState:UIControlStateNormal];
+        NSLog(@"\n开始时间： %@",startDate);
+        
+
     }];
-    datepicker.datePickerStyle = DateStyleShowYearMonthDayHourMinute;
+    datepicker.datePickerStyle = DateStyleShowYearMonthDay;
+    datepicker.minLimitDate = [NSDate date:@"2017-2-28 12:22" WithFormat:@"yyyy-MM-dd HH:mm"];
+    datepicker.maxLimitDate = [NSDate date:@"2018-2-28 12:12" WithFormat:@"yyyy-MM-dd HH:mm"];
     [datepicker show];
+    
+//    WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithCompleteBlock:^(NSDate *startDate) {
+//        NSString *date = [startDate stringWithFormat:@"yyyy-MM-dd HH:mm"];
+//        NSLog(@"时间： %@",date);
+//        [btn setTitle:date forState:UIControlStateNormal];
+//    }];
+//    datepicker.datePickerStyle = DateStyleShowYearMonthDayHourMinute;
+//    [datepicker show];
     
 }
 
