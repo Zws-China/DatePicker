@@ -24,7 +24,11 @@ typedef enum{
 @property (nonatomic,assign)WSDateStyle datePickerStyle;
 
 @property (nonatomic,strong)UIColor *themeColor;
+//取消按钮背景
+@property (nonatomic,strong)UIColor *cancleColor;
 
+
+@property (nonatomic, retain) NSDate *nowData;//默认显示时间
 @property (nonatomic, retain) NSDate *maxLimitDate;//限制最大时间（没有设置默认2049）
 @property (nonatomic, retain) NSDate *minLimitDate;//限制最小时间（没有设置默认1970）
 

@@ -37,7 +37,7 @@
         [btn setTitle:date forState:UIControlStateNormal];
 
     }];
-    datepicker.datePickerStyle = DateStyleShowYearMonthDay;
+    datepicker.datePickerStyle = DateStyleShowYearMonthDayHourMinute;
     datepicker.minLimitDate = [NSDate date:@"1970-1-01 00:00" WithFormat:@"yyyy-MM-dd HH:mm"];
     datepicker.maxLimitDate = [NSDate date:@"2049-12-31 23:59" WithFormat:@"yyyy-MM-dd HH:mm"];
     [datepicker show];

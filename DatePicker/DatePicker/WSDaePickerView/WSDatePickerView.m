@@ -45,6 +45,7 @@ typedef void(^doneBlock)(NSDate *);
 @property (weak, nonatomic) IBOutlet UIView *buttomView;
 @property (weak, nonatomic) IBOutlet UILabel *showYearView;
 @property (weak, nonatomic) IBOutlet UIButton *doneBtn;
+@property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
 - (IBAction)doneAction:(UIButton *)btn;
@@ -83,7 +84,7 @@ typedef void(^doneBlock)(NSDate *);
     //self.themeColor = [UIColor colorFromHexRGB:@"#f7b639"];
     self.themeColor = RGB(247, 133, 51);
     self.frame=CGRectMake(0, 0, kScreenWidth, kScreenHeight);
-    
+    [_cancelBtn setBackgroundColor:[UIColor grayColor]];
     //点击背景是否影藏
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismiss)];
     tap.delegate = self;
@@ -507,6 +508,10 @@ typedef void(^doneBlock)(NSDate *);
     self.doneBlock(_startDate);
     [self dismiss];
 }
+- (IBAction)cancelAction:(UIButton *)sender {
+    [self dismiss];
+    
+}
 
 #pragma mark - tools
 //通过年月求每月天数
@@ -619,6 +624,15 @@ typedef void(^doneBlock)(NSDate *);
 -(void)setThemeColor:(UIColor *)themeColor {
     _themeColor = themeColor;
     self.doneBtn.backgroundColor = themeColor;
+}
+
+-(void)setCancleColor:(UIColor *)cancleColor{
+    _cancleColor = cancleColor;
+    self.cancelBtn.backgroundColor = cancleColor;
+}
+
+- (void)setNowData:(NSDate *)nowData{
+    _scrollToDate = nowData;
 }
 
 
