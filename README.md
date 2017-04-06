@@ -26,8 +26,7 @@ datepicker.doneButtonColor = [UIColor purpleColor];//确定按钮的颜色
 
 可设置的属性
 @property (nonatomic,strong)UIColor *doneButtonColor;//按钮颜色
-@property (nonatomic, retain) NSDate *maxLimitDate;//限制最大时间（没有设置默认9999）
-@property (nonatomic, retain) NSDate *minLimitDate;//限制最小时间（没有设置默认0）
-
+@property (nonatomic, retain) NSDate *maxLimitDate;//限制最大时间（默认9999-12-31 23:59）
+@property (nonatomic, retain) NSDate *minLimitDate;//限制最小时间（默认   0-01-01 00:00）
 
 ```
