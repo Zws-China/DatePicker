@@ -21,14 +21,12 @@ typedef enum{
 
 @interface WSDatePickerView : UIView
 
-@property (nonatomic,assign)WSDateStyle datePickerStyle;
+@property (nonatomic,strong)UIColor *doneButtonColor;//按钮颜色
 
-@property (nonatomic,strong)UIColor *themeColor;
+@property (nonatomic, retain) NSDate *maxLimitDate;//限制最大时间（没有设置默认9999）
+@property (nonatomic, retain) NSDate *minLimitDate;//限制最小时间（没有设置默认0）
 
-@property (nonatomic, retain) NSDate *maxLimitDate;//限制最大时间（没有设置默认2049）
-@property (nonatomic, retain) NSDate *minLimitDate;//限制最小时间（没有设置默认1970）
-
--(instancetype)initWithCompleteBlock:(void(^)(NSDate *))completeBlock;
+-(instancetype)initWithDateStyle:(WSDateStyle)datePickerStyle CompleteBlock:(void(^)(NSDate *))completeBlock;
 
 -(void)show;
 

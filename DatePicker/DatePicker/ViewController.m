@@ -31,15 +31,14 @@
 }
 
 - (void)selectAction:(UIButton *)btn {
-    WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithCompleteBlock:^(NSDate *startDate) {
+
+    WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute CompleteBlock:^(NSDate *startDate) {
         NSString *date = [startDate stringWithFormat:@"yyyy-MM-dd HH:mm"];
         NSLog(@"时间： %@",date);
         [btn setTitle:date forState:UIControlStateNormal];
 
     }];
-    datepicker.datePickerStyle = DateStyleShowYearMonthDay;
-    datepicker.minLimitDate = [NSDate date:@"1970-1-01 00:00" WithFormat:@"yyyy-MM-dd HH:mm"];
-    datepicker.maxLimitDate = [NSDate date:@"2049-12-31 23:59" WithFormat:@"yyyy-MM-dd HH:mm"];
+    datepicker.doneButtonColor = [UIColor purpleColor];//确定按钮的颜色
     [datepicker show];
     
 }

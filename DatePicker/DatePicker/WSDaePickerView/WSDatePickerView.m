@@ -17,8 +17,8 @@
 #define RGB(r, g, b) RGBA(r,g,b,1)
 
 
-#define MAXYEAR 2050
-#define MINYEAR 1970
+#define MAXYEAR 9999
+#define MINYEAR 0
 
 typedef void(^doneBlock)(NSDate *);
 
@@ -53,18 +53,42 @@ typedef void(^doneBlock)(NSDate *);
 @property (nonatomic,strong)UIPickerView *datePicker;
 @property (nonatomic, retain) NSDate *scrollToDate;//滚到指定日期
 @property (nonatomic,strong)doneBlock doneBlock;
+@property (nonatomic,assign)WSDateStyle datePickerStyle;
 
 
 @end
 
 @implementation WSDatePickerView
 
--(instancetype)initWithCompleteBlock:(void(^)(NSDate *))completeBlock {
+-(instancetype)initWithDateStyle:(WSDateStyle)datePickerStyle CompleteBlock:(void(^)(NSDate *))completeBlock {
     self = [super init];
     if (self) {
         self = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil] lastObject];
+
         
-        _dateFormatter = @"yyyy-MM-dd HH:mm";
+        self.datePickerStyle = datePickerStyle;
+        switch (datePickerStyle) {
+            case DateStyleShowYearMonthDayHourMinute:
+                _dateFormatter = @"yyyy-MM-dd HH:mm";
+                break;
+            case DateStyleShowMonthDayHourMinute:
+                _dateFormatter = @"yyyy-MM-dd HH:mm";
+                break;
+            case DateStyleShowYearMonthDay:
+                _dateFormatter = @"yyyy-MM-dd";
+                break;
+            case DateStyleShowMonthDay:
+                _dateFormatter = @"yyyy-MM-dd";
+                break;
+            case DateStyleShowHourMinute:
+                _dateFormatter = @"HH:mm";
+                break;
+                
+            default:
+                _dateFormatter = @"yyyy-MM-dd HH:mm";
+                break;
+        }
+        
         [self setupUI];
         [self defaultConfig];
         
@@ -81,7 +105,7 @@ typedef void(^doneBlock)(NSDate *);
     self.buttomView.layer.cornerRadius = 10;
     self.buttomView.layer.masksToBounds = YES;
     //self.themeColor = [UIColor colorFromHexRGB:@"#f7b639"];
-    self.themeColor = RGB(247, 133, 51);
+    self.doneButtonColor = RGB(247, 133, 51);
     self.frame=CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     
     //点击背景是否影藏
@@ -134,11 +158,11 @@ typedef void(^doneBlock)(NSDate *);
     
     //最大最小限制
     if (!self.maxLimitDate) {
-        self.maxLimitDate = [NSDate date:@"2049-12-31 23:59" WithFormat:@"yyyy-MM-dd HH:mm"];
+        self.maxLimitDate = [NSDate date:@"9999-12-31 23:59" WithFormat:@"yyyy-MM-dd HH:mm"];
     }
     //最小限制
     if (!self.minLimitDate) {
-        self.minLimitDate = [NSDate dateWithTimeIntervalSince1970:0];
+        self.minLimitDate = [NSDate date:@"0000-01-01 00:00" WithFormat:@"yyyy-MM-dd HH:mm"];
     }
 }
 
@@ -154,7 +178,7 @@ typedef void(^doneBlock)(NSDate *);
         label.text = nameArr[i];
         label.textAlignment = NSTextAlignmentCenter;
         label.font = [UIFont systemFontOfSize:14];
-        label.textColor = self.themeColor;
+        label.textColor =  RGB(247, 133, 51);
         label.backgroundColor = [UIColor clearColor];
         [self.showYearView addSubview:label];
     }
@@ -318,6 +342,7 @@ typedef void(^doneBlock)(NSDate *);
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
+    
     switch (self.datePickerStyle) {
         case DateStyleShowYearMonthDayHourMinute:{
             
@@ -616,25 +641,9 @@ typedef void(^doneBlock)(NSDate *);
     [self getNowDate:self.scrollToDate animated:NO];
 }
 
--(void)setThemeColor:(UIColor *)themeColor {
-    _themeColor = themeColor;
-    self.doneBtn.backgroundColor = themeColor;
-}
-
-
--(void)setDatePickerStyle:(WSDateStyle)datePickerStyle {
-    _datePickerStyle = datePickerStyle;
-    switch (datePickerStyle) {
-            break;
-        case DateStyleShowYearMonthDay:
-        case DateStyleShowMonthDay:
-            _dateFormatter = @"yyyy-MM-dd";
-            break;
-            
-        default:
-            break;
-    }
-    [self.datePicker reloadAllComponents];
+-(void)setDoneButtonColor:(UIColor *)doneButtonColor {
+    _doneButtonColor = doneButtonColor;
+    self.doneBtn.backgroundColor = doneButtonColor;
 }
 
 @end
