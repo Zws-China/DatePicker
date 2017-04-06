@@ -13,11 +13,21 @@
 
 ```ruby
 
-WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithCompleteBlock:^(NSDate *startDate) {
-    NSString *date = [startDate stringWithFormat:@"yyyy-MM-dd HH:mm"];
-    NSLog(@"时间： %@",date);
+WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute CompleteBlock:^(NSDate *startDate) {
+NSString *date = [startDate stringWithFormat:@"yyyy-MM-dd HH:mm"];
+NSLog(@"时间： %@",date);
+[btn setTitle:date forState:UIControlStateNormal];
+
 }];
-    datepicker.datePickerStyle = DateStyleShowYearMonthDayHourMinute;
-    [datepicker show];
+datepicker.doneButtonColor = [UIColor purpleColor];//确定按钮的颜色
+[datepicker show];
+
+
+
+可设置的属性
+@property (nonatomic,strong)UIColor *doneButtonColor;//按钮颜色
+@property (nonatomic, retain) NSDate *maxLimitDate;//限制最大时间（没有设置默认9999）
+@property (nonatomic, retain) NSDate *minLimitDate;//限制最小时间（没有设置默认0）
+
 
 ```
