@@ -6,7 +6,7 @@
 
 
 # PhotoShoot
-![image](https://github.com/Zws-China/.../blob/master/datepicker.gif)
+![这里写图片描述](http://img.blog.csdn.net/20170406171007690?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjY1OTgwNzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 
 # How To Use
@@ -30,3 +30,32 @@ datepicker.doneButtonColor = [UIColor purpleColor];//确定按钮的颜色
 @property (nonatomic, retain) NSDate *minLimitDate;//限制最小时间（默认   0-01-01 00:00）
 
 ```
+
+
+## 弹框的类型
+```ruby
+typedef enum{
+DateStyleShowYearMonthDayHourMinute  = 0,    //年月日时分
+DateStyleShowMonthDayHourMinute,    //月日时分
+DateStyleShowYearMonthDay,    //年月日
+DateStyleShowMonthDay,    //月日
+DateStyleShowHourMinute    //时分
+
+}WSDateStyle;
+
+```
+<br><br>
+#### 类型1（DateStyleShowYearMonthDayHourMinute）<br>
+![这里写图片描述](http://img.blog.csdn.net/20170406171425510?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjY1OTgwNzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+#### 类型2（DateStyleShowMonthDayHourMinute）<br>
+![这里写图片描述](http://img.blog.csdn.net/20170406171606527?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjY1OTgwNzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+#### 类型3（DateStyleShowYearMonthDay）<br>
+![这里写图片描述](http://img.blog.csdn.net/20170406171552762?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjY1OTgwNzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+#### 类型4（DateStyleShowMonthDay）<br>
+![这里写图片描述](http://img.blog.csdn.net/20170406171721639?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjY1OTgwNzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+#### 类型5（DateStyleShowHourMinute）<br>
+![这里写图片描述](http://img.blog.csdn.net/20170406171706389?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjY1OTgwNzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)

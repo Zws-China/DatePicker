@@ -32,13 +32,13 @@
 
 - (void)selectAction:(UIButton *)btn {
 
-    WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute CompleteBlock:^(NSDate *startDate) {
+    WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowHourMinute CompleteBlock:^(NSDate *startDate) {
         NSString *date = [startDate stringWithFormat:@"yyyy-MM-dd HH:mm"];
         NSLog(@"时间： %@",date);
         [btn setTitle:date forState:UIControlStateNormal];
 
     }];
-    datepicker.doneButtonColor = [UIColor purpleColor];//确定按钮的颜色
+    datepicker.doneButtonColor = [UIColor orangeColor];//确定按钮的颜色
     [datepicker show];
     
 }
