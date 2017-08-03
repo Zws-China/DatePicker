@@ -9,22 +9,44 @@
 #import <UIKit/UIKit.h>
 #import "NSDate+Extension.h"
 
+/**
+ *  弹出日期类型
+ */
 typedef enum{
-    DateStyleShowYearMonthDayHourMinute  = 0,
-    DateStyleShowMonthDayHourMinute,
-    DateStyleShowYearMonthDay,
-    DateStyleShowMonthDay,
-    DateStyleShowHourMinute
+    DateStyleShowYearMonthDayHourMinute  = 0,//年月日时分
+    DateStyleShowMonthDayHourMinute,//月日时分
+    DateStyleShowYearMonthDay,//年月日
+    DateStyleShowMonthDay,//月日
+    DateStyleShowHourMinute//时分
     
 }WSDateStyle;
 
 
 @interface WSDatePickerView : UIView
 
-@property (nonatomic,strong)UIColor *doneButtonColor;//按钮颜色
+/**
+ *  确定按钮颜色
+ */
+@property (nonatomic,strong)UIColor *doneButtonColor;
+/**
+ *  年-月-日-时-分 文字颜色(默认橙色)
+ */
+@property (nonatomic,strong)UIColor *dateLabelColor;
+/**
+ *  滚轮日期颜色(默认黑色)
+ */
+@property (nonatomic,strong)UIColor *datePickerColor;
 
-@property (nonatomic, retain) NSDate *maxLimitDate;//限制最大时间（没有设置默认9999）
-@property (nonatomic, retain) NSDate *minLimitDate;//限制最小时间（没有设置默认0）
+/**
+ *  限制最大时间（默认2099）datePicker大于最大日期则滚动回最大限制日期
+ */
+@property (nonatomic, retain) NSDate *maxLimitDate;
+/**
+ *  限制最小时间（默认0） datePicker小于最小日期则滚动回最小限制日期
+ */
+@property (nonatomic, retain) NSDate *minLimitDate;
+
+
 
 -(instancetype)initWithDateStyle:(WSDateStyle)datePickerStyle CompleteBlock:(void(^)(NSDate *))completeBlock;
 
