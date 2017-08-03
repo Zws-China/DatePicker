@@ -121,7 +121,7 @@
     
 
     
-//_________________________月-日_______________________________________________
+//_________________________时-分_______________________________________________
     
     /*
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowHourMinute CompleteBlock:^(NSDate *selectDate) {
