@@ -28,9 +28,10 @@
                             </connections>
                         </button>
                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zE9-lT-myF">
-                            <rect key="frame" x="0.0" y="5" width="580" height="216"/>
+                            <rect key="frame" x="0.0" y="0.0" width="580" height="216"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="300" id="Jnx-Pc-Fjt"/>
+                                <constraint firstAttribute="height" constant="216" id="MPL-yQ-XEM"/>
                                 <constraint firstAttribute="height" constant="200" id="yfH-dm-Hcp"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="110"/>
@@ -51,10 +52,10 @@
                         <constraint firstItem="zE9-lT-myF" firstAttribute="leading" secondItem="gvZ-fK-lMh" secondAttribute="leading" id="NM5-rp-NR2"/>
                         <constraint firstAttribute="bottom" secondItem="nwp-LQ-VOg" secondAttribute="bottom" id="Pjo-Vg-xbv"/>
                         <constraint firstAttribute="height" constant="340" id="fmE-gN-Ogj"/>
-                        <constraint firstItem="nwp-LQ-VOg" firstAttribute="top" secondItem="zE9-lT-myF" secondAttribute="bottom" constant="5" id="fp9-UF-vKf"/>
+                        <constraint firstItem="nwp-LQ-VOg" firstAttribute="top" secondItem="zE9-lT-myF" secondAttribute="bottom" id="fp9-UF-vKf"/>
                         <constraint firstItem="nwp-LQ-VOg" firstAttribute="leading" secondItem="gvZ-fK-lMh" secondAttribute="leading" id="nDt-sW-TaF"/>
                         <constraint firstAttribute="width" constant="300" id="nsL-oj-rVj"/>
-                        <constraint firstItem="zE9-lT-myF" firstAttribute="top" secondItem="gvZ-fK-lMh" secondAttribute="top" constant="5" id="oBI-IG-JTk"/>
+                        <constraint firstItem="zE9-lT-myF" firstAttribute="top" secondItem="gvZ-fK-lMh" secondAttribute="top" id="oBI-IG-JTk"/>
                         <constraint firstAttribute="trailing" secondItem="nwp-LQ-VOg" secondAttribute="trailing" id="xGA-yP-Pi2"/>
                         <constraint firstAttribute="width" constant="300" id="xro-bO-XiL"/>
                     </constraints>
@@ -63,6 +64,7 @@
                             <exclude reference="fmE-gN-Ogj"/>
                             <exclude reference="nsL-oj-rVj"/>
                             <exclude reference="xro-bO-XiL"/>
+                            <exclude reference="fp9-UF-vKf"/>
                         </mask>
                     </variation>
                 </view>
