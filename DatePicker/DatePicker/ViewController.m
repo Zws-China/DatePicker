@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "WSDatePickerView.h"
+#define RGB(x,y,z) [UIColor colorWithRed:x/255.0 green:y/255.0 blue:z/255.0 alpha:1.0]
 
 @interface ViewController ()
 
@@ -27,6 +28,14 @@
     [self.view addSubview:selectBtn];
     [selectBtn addTarget:self action:@selector(selectAction:) forControlEvents:UIControlEventTouchUpInside];
     
+    UIButton *selectBtn2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    selectBtn2.frame = CGRectMake(20, 200, self.view.frame.size.width-40, 50);
+    selectBtn2.layer.cornerRadius = 5;
+    selectBtn2.backgroundColor = [UIColor lightGrayColor];
+    [selectBtn2 setTitle:@"弹出指定日期2011-11-11 11:11" forState:UIControlStateNormal];
+    [self.view addSubview:selectBtn2];
+    [selectBtn2 addTarget:self action:@selector(selectAction2:) forControlEvents:UIControlEventTouchUpInside];
+    
 
 }
 
@@ -34,7 +43,6 @@
 
 //_________________________年-月-日-时-分____________________________________________
 
-    /**
      WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute CompleteBlock:^(NSDate *selectDate) {
      
      NSString *date = [selectDate stringWithFormat:@"yyyy-MM-dd HH:mm"];
@@ -42,37 +50,11 @@
      [btn setTitle:date forState:UIControlStateNormal];
      
      }];
-     datepicker.dateLabelColor = [UIColor redColor];//年-月-日-时-分 颜色
+     datepicker.dateLabelColor = [UIColor orangeColor];//年-月-日-时-分 颜色
      datepicker.datePickerColor = [UIColor blackColor];//滚轮日期颜色
      datepicker.doneButtonColor = [UIColor orangeColor];//确定按钮的颜色
      [datepicker show];
 
-     */
-    
-
-    
-    
-
-//_________________________年-月-日-时-分（滚动到指定的日期）_________________________
-    NSDateFormatter *minDateFormater = [[NSDateFormatter alloc] init];
-    [minDateFormater setDateFormat:@"yyyy-MM-dd HH:mm"];
-    NSDate *scrollToDate = [minDateFormater dateFromString:@"2011-11-11 11:11"];
-
-    WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:scrollToDate CompleteBlock:^(NSDate *selectDate) {
-        
-        NSString *date = [selectDate stringWithFormat:@"yyyy-MM-dd HH:mm"];
-        NSLog(@"选择的日期：%@",date);
-        [btn setTitle:date forState:UIControlStateNormal];
-        
-    }];
-    datepicker.dateLabelColor = [UIColor redColor];//年-月-日-时-分 颜色
-    datepicker.datePickerColor = [UIColor blackColor];//滚轮日期颜色
-    datepicker.doneButtonColor = [UIColor orangeColor];//确定按钮的颜色
-    datepicker.yearLabelColor = [UIColor clearColor];//大号年份字体颜色
-    [datepicker show];
-    
-    
-    
     
     
     
@@ -159,6 +141,26 @@
     
 }
 
+- (void)selectAction2:(UIButton *)btn {
+    //_________________________年-月-日-时-分（滚动到指定的日期）_________________________
+    NSDateFormatter *minDateFormater = [[NSDateFormatter alloc] init];
+    [minDateFormater setDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSDate *scrollToDate = [minDateFormater dateFromString:@"2011-11-11 11:11"];
+    
+    WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:scrollToDate CompleteBlock:^(NSDate *selectDate) {
+        
+        NSString *date = [selectDate stringWithFormat:@"yyyy-MM-dd HH:mm"];
+        NSLog(@"选择的日期：%@",date);
+        [btn setTitle:date forState:UIControlStateNormal];
+        
+    }];
+    datepicker.dateLabelColor = RGB(65, 188, 241);//年-月-日-时-分 颜色
+    datepicker.datePickerColor = [UIColor blackColor];//滚轮日期颜色
+    datepicker.doneButtonColor = RGB(65, 188, 241);//确定按钮的颜色
+    datepicker.yearLabelColor = [UIColor clearColor];//大号年份字体颜色
+    [datepicker show];
+    
+}
 
 
 

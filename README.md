@@ -6,14 +6,16 @@
 
 
 # PhotoShoot
-![这里写图片描述](http://img.blog.csdn.net/20170406171007690?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjY1OTgwNzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![这里写图片描述](http://img.blog.csdn.net/20170809172306981?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjY1OTgwNzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 
 ## 可设置属性
 ```ruby
+宏定义
+#define RGB(x,y,z) [UIColor colorWithRed:x/255.0 green:y/255.0 blue:z/255.0 alpha:1.0]
+
 
 可设置的属性
-
 //确定按钮颜色
 @property (nonatomic,strong)UIColor *doneButtonColor;
 
@@ -63,7 +65,7 @@ WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateS
     NSString *date = [selectDate stringWithFormat:@"yyyy-MM-dd HH:mm"];
     NSLog(@"选择的日期：%@",date);
 }];
-datepicker.dateLabelColor = [UIColor redColor];//年-月-日-时-分 颜色
+datepicker.dateLabelColor = [UIColor orangeColor];//年-月-日-时-分 颜色
 datepicker.datePickerColor = [UIColor blackColor];//滚轮日期颜色
 datepicker.doneButtonColor = [UIColor orangeColor];//确定按钮的颜色
 [datepicker show];
@@ -80,9 +82,9 @@ WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateS
     NSString *date = [selectDate stringWithFormat:@"yyyy-MM-dd HH:mm"];
     NSLog(@"选择的日期：%@",date);
 }];
-datepicker.dateLabelColor = [UIColor redColor];//年-月-日-时-分 颜色
+datepicker.dateLabelColor = RGB(65, 188, 241);//年-月-日-时-分 颜色
 datepicker.datePickerColor = [UIColor blackColor];//滚轮日期颜色
-datepicker.doneButtonColor = [UIColor orangeColor];//确定按钮的颜色
+datepicker.doneButtonColor = RGB(65, 188, 241);//确定按钮的颜色
 datepicker.yearLabelColor = [UIColor clearColor];//大号年份字体颜色
 [datepicker show];
 
