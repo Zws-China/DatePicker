@@ -34,7 +34,31 @@
 
 //_________________________年-月-日-时-分____________________________________________
 
-    WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute CompleteBlock:^(NSDate *selectDate) {
+    /**
+     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute CompleteBlock:^(NSDate *selectDate) {
+     
+     NSString *date = [selectDate stringWithFormat:@"yyyy-MM-dd HH:mm"];
+     NSLog(@"选择的日期：%@",date);
+     [btn setTitle:date forState:UIControlStateNormal];
+     
+     }];
+     datepicker.dateLabelColor = [UIColor redColor];//年-月-日-时-分 颜色
+     datepicker.datePickerColor = [UIColor blackColor];//滚轮日期颜色
+     datepicker.doneButtonColor = [UIColor orangeColor];//确定按钮的颜色
+     [datepicker show];
+
+     */
+    
+
+    
+    
+
+//_________________________年-月-日-时-分（滚动到指定的日期）_________________________
+    NSDateFormatter *minDateFormater = [[NSDateFormatter alloc] init];
+    [minDateFormater setDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSDate *scrollToDate = [minDateFormater dateFromString:@"2011-11-11 11:11"];
+
+    WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:scrollToDate CompleteBlock:^(NSDate *selectDate) {
         
         NSString *date = [selectDate stringWithFormat:@"yyyy-MM-dd HH:mm"];
         NSLog(@"选择的日期：%@",date);
@@ -46,8 +70,8 @@
     datepicker.doneButtonColor = [UIColor orangeColor];//确定按钮的颜色
     [datepicker show];
     
-//________________________________________________________________________________
-
+    
+    
     
     
     
@@ -68,7 +92,6 @@
      [datepicker show];
 
      */
-//________________________________________________________________________________
 
     
     
@@ -90,7 +113,6 @@
      [datepicker show];
      
      */
-//________________________________________________________________________________
  
    
     
@@ -111,7 +133,6 @@
      [datepicker show];
      */
      
-//_____________________________________________________________________________
     
     
     
@@ -134,7 +155,6 @@
     [datepicker show];
     */
     
-//_____________________________________________________________________________
     
 }
 

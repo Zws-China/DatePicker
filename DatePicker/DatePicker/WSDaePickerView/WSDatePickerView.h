@@ -47,8 +47,16 @@ typedef enum{
 @property (nonatomic, retain) NSDate *minLimitDate;
 
 
-
+/**
+ 默认滚动到当前时间
+ */
 -(instancetype)initWithDateStyle:(WSDateStyle)datePickerStyle CompleteBlock:(void(^)(NSDate *))completeBlock;
+
+/**
+ 滚动到指定的的日期
+ */
+-(instancetype)initWithDateStyle:(WSDateStyle)datePickerStyle scrollToDate:(NSDate *)scrollToDate CompleteBlock:(void(^)(NSDate *))completeBlock;
+
 
 -(void)show;
 

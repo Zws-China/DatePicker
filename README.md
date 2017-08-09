@@ -29,6 +29,12 @@
 //限制最小时间（默认0） datePicker小于最小日期则滚动回最小限制日期
 @property (nonatomic, retain) NSDate *minLimitDate;
 
+//默认滚动到当前时间
+-(instancetype)initWithDateStyle:(WSDateStyle)datePickerStyle CompleteBlock:(void(^)(NSDate *))completeBlock;
+
+//滚动到指定的的日期
+-(instancetype)initWithDateStyle:(WSDateStyle)datePickerStyle scrollToDate:(NSDate *)scrollToDate CompleteBlock:(void(^)(NSDate *))completeBlock;
+
 
 ```
 
@@ -48,16 +54,34 @@ DateStyleShowHourMinute                      //时-分
 <br><br>
 #### 类型1（DateStyleShowYearMonthDayHourMinute）<br>
 ```ruby
+//_________________________年-月-日-时-分____________________________________________
 WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute CompleteBlock:^(NSDate *selectDate) {
 
     NSString *date = [selectDate stringWithFormat:@"yyyy-MM-dd HH:mm"];
     NSLog(@"选择的日期：%@",date);
-
 }];
 datepicker.dateLabelColor = [UIColor redColor];//年-月-日-时-分 颜色
 datepicker.datePickerColor = [UIColor blackColor];//滚轮日期颜色
 datepicker.doneButtonColor = [UIColor orangeColor];//确定按钮的颜色
 [datepicker show];
+
+
+
+//_________________________年-月-日-时-分（滚动到指定的日期）_________________________
+NSDateFormatter *minDateFormater = [[NSDateFormatter alloc] init];
+[minDateFormater setDateFormat:@"yyyy-MM-dd HH:mm"];
+NSDate *scrollToDate = [minDateFormater dateFromString:@"2011-11-11 11:11"];
+
+WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:scrollToDate CompleteBlock:^(NSDate *selectDate) {
+
+    NSString *date = [selectDate stringWithFormat:@"yyyy-MM-dd HH:mm"];
+    NSLog(@"选择的日期：%@",date);
+}];
+datepicker.dateLabelColor = [UIColor redColor];//年-月-日-时-分 颜色
+datepicker.datePickerColor = [UIColor blackColor];//滚轮日期颜色
+datepicker.doneButtonColor = [UIColor orangeColor];//确定按钮的颜色
+[datepicker show];
+
 ```
 ![这里写图片描述](http://img.blog.csdn.net/20170406171425510?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjY1OTgwNzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 

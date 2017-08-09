@@ -59,7 +59,9 @@ typedef void(^doneBlock)(NSDate *);
 @end
 
 @implementation WSDatePickerView
-
+/**
+ 默认滚动到当前时间
+ */
 -(instancetype)initWithDateStyle:(WSDateStyle)datePickerStyle CompleteBlock:(void(^)(NSDate *))completeBlock {
     self = [super init];
     if (self) {
@@ -67,6 +69,51 @@ typedef void(^doneBlock)(NSDate *);
 
         
         self.datePickerStyle = datePickerStyle;
+        switch (datePickerStyle) {
+            case DateStyleShowYearMonthDayHourMinute:
+                _dateFormatter = @"yyyy-MM-dd HH:mm";
+                break;
+            case DateStyleShowMonthDayHourMinute:
+                _dateFormatter = @"yyyy-MM-dd HH:mm";
+                break;
+            case DateStyleShowYearMonthDay:
+                _dateFormatter = @"yyyy-MM-dd";
+                break;
+            case DateStyleShowMonthDay:
+                _dateFormatter = @"yyyy-MM-dd";
+                break;
+            case DateStyleShowHourMinute:
+                _dateFormatter = @"HH:mm";
+                break;
+                
+            default:
+                _dateFormatter = @"yyyy-MM-dd HH:mm";
+                break;
+        }
+        
+        [self setupUI];
+        [self defaultConfig];
+        
+        if (completeBlock) {
+            self.doneBlock = ^(NSDate *selectDate) {
+                completeBlock(selectDate);
+            };
+        }
+    }
+    return self;
+}
+
+/**
+ 滚动到指定的的日期
+ */
+-(instancetype)initWithDateStyle:(WSDateStyle)datePickerStyle scrollToDate:(NSDate *)scrollToDate CompleteBlock:(void(^)(NSDate *))completeBlock {
+    self = [super init];
+    if (self) {
+        self = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil] lastObject];
+        
+        
+        self.datePickerStyle = datePickerStyle;
+        self.scrollToDate = scrollToDate;
         switch (datePickerStyle) {
             case DateStyleShowYearMonthDayHourMinute:
                 _dateFormatter = @"yyyy-MM-dd HH:mm";
