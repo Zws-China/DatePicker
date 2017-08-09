@@ -256,6 +256,10 @@ typedef void(^doneBlock)(NSDate *);
     return mutableArray;
 }
 
+-(void)setYearLabelColor:(UIColor *)yearLabelColor {
+    self.showYearView.textColor = yearLabelColor;
+}
+
 #pragma mark - UIPickerViewDelegate,UIPickerViewDataSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {

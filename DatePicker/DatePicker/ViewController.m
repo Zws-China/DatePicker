@@ -68,6 +68,7 @@
     datepicker.dateLabelColor = [UIColor redColor];//年-月-日-时-分 颜色
     datepicker.datePickerColor = [UIColor blackColor];//滚轮日期颜色
     datepicker.doneButtonColor = [UIColor orangeColor];//确定按钮的颜色
+    datepicker.yearLabelColor = [UIColor clearColor];//大号年份字体颜色
     [datepicker show];
     
     

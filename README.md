@@ -29,6 +29,9 @@
 //限制最小时间（默认0） datePicker小于最小日期则滚动回最小限制日期
 @property (nonatomic, retain) NSDate *minLimitDate;
 
+//大号年份字体颜色(默认灰色)想隐藏可以设置为clearColor
+@property (nonatomic, retain) UIColor *yearLabelColor;
+
 //默认滚动到当前时间
 -(instancetype)initWithDateStyle:(WSDateStyle)datePickerStyle CompleteBlock:(void(^)(NSDate *))completeBlock;
 
@@ -80,6 +83,7 @@ WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateS
 datepicker.dateLabelColor = [UIColor redColor];//年-月-日-时-分 颜色
 datepicker.datePickerColor = [UIColor blackColor];//滚轮日期颜色
 datepicker.doneButtonColor = [UIColor orangeColor];//确定按钮的颜色
+datepicker.yearLabelColor = [UIColor clearColor];//大号年份字体颜色
 [datepicker show];
 
 ```
