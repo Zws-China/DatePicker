@@ -15,6 +15,10 @@
 #define kPickerSize self.datePicker.frame.size
 #define RGBA(r, g, b, a) ([UIColor colorWithRed:(r / 255.0) green:(g / 255.0) blue:(b / 255.0) alpha:a])
 #define RGB(r, g, b) RGBA(r,g,b,1)
+// 判断是否是iPhone X
+#define isiPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+// home indicator
+#define bottom_height (isiPhoneX ? 34.f : 10.f)
 
 
 #define MAXYEAR 2099
@@ -575,7 +579,7 @@ typedef void(^doneBlock)(NSDate *);
     
     [[UIApplication sharedApplication].keyWindow addSubview:self];
     [UIView animateWithDuration:.3 animations:^{
-        self.bottomConstraint.constant = 10;
+        self.bottomConstraint.constant = bottom_height;
         self.backgroundColor = RGBA(0, 0, 0, 0.4);
         [self layoutIfNeeded];
     }];
