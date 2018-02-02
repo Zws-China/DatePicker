@@ -16,6 +16,7 @@ typedef enum{
     DateStyleShowYearMonthDayHourMinute  = 0,//年月日时分
     DateStyleShowMonthDayHourMinute,//月日时分
     DateStyleShowYearMonthDay,//年月日
+    DateStyleShowYearMonth,//年月
     DateStyleShowMonthDay,//月日
     DateStyleShowHourMinute//时分
     
@@ -50,6 +51,11 @@ typedef enum{
  *  大号年份字体颜色(默认灰色)想隐藏可以设置为clearColor
  */
 @property (nonatomic, retain) UIColor *yearLabelColor;
+
+/**
+ *  隐藏背景年份文字
+ */
+@property (nonatomic, assign) BOOL hideBackgroundYearLabel;
 
 /**
  默认滚动到当前时间

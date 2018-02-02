@@ -22,7 +22,7 @@
 
 
 #define MAXYEAR 2099
-#define MINYEAR 0
+#define MINYEAR 1000
 
 typedef void(^doneBlock)(NSDate *);
 
@@ -83,6 +83,9 @@ typedef void(^doneBlock)(NSDate *);
             case DateStyleShowYearMonthDay:
                 _dateFormatter = @"yyyy-MM-dd";
                 break;
+            case DateStyleShowYearMonth:
+                _dateFormatter = @"yyyy-MM";
+                break;
             case DateStyleShowMonthDay:
                 _dateFormatter = @"yyyy-MM-dd";
                 break;
@@ -127,6 +130,9 @@ typedef void(^doneBlock)(NSDate *);
                 break;
             case DateStyleShowYearMonthDay:
                 _dateFormatter = @"yyyy-MM-dd";
+                break;
+            case DateStyleShowYearMonth:
+                _dateFormatter = @"yyyy-MM";
                 break;
             case DateStyleShowMonthDay:
                 _dateFormatter = @"yyyy-MM-dd";
@@ -212,7 +218,7 @@ typedef void(^doneBlock)(NSDate *);
     }
     //最小限制
     if (!self.minLimitDate) {
-        self.minLimitDate = [NSDate date:@"0000-01-01 00:00" WithFormat:@"yyyy-MM-dd HH:mm"];
+        self.minLimitDate = [NSDate date:@"1000-01-01 00:00" WithFormat:@"yyyy-MM-dd HH:mm"];
     }
 }
 
@@ -277,6 +283,9 @@ typedef void(^doneBlock)(NSDate *);
         case DateStyleShowYearMonthDay:
             [self addLabelWithName:@[@"年",@"月",@"日"]];
             return 3;
+        case DateStyleShowYearMonth:
+            [self addLabelWithName:@[@"年",@"月"]];
+            return 2;
         case DateStyleShowMonthDay:
             [self addLabelWithName:@[@"月",@"日"]];
             return 2;
@@ -312,6 +321,9 @@ typedef void(^doneBlock)(NSDate *);
             break;
         case DateStyleShowYearMonthDay:
             return @[@(yearNum),@(monthNum),@(dayNum)];
+            break;
+        case DateStyleShowYearMonth:
+            return @[@(yearNum),@(monthNum)];
             break;
         case DateStyleShowMonthDay:
             return @[@(monthNum*timeInterval),@(dayNum),@(hourNum)];
@@ -367,6 +379,14 @@ typedef void(^doneBlock)(NSDate *);
             }
             if (component==2) {
                 title = _dayArray[row];
+            }
+            break;
+        case DateStyleShowYearMonth:
+            if (component==0) {
+                title = _yearArray[row];
+            }
+            if (component==1) {
+                title = _monthArray[row];
             }
             break;
         case DateStyleShowMonthDayHourMinute:
@@ -464,6 +484,18 @@ typedef void(^doneBlock)(NSDate *);
                 if (_dayArray.count-1<dayIndex) {
                     dayIndex = _dayArray.count-1;
                 }
+            }
+        }
+            break;
+        
+        case DateStyleShowYearMonth:{
+            
+            if (component == 0) {
+                yearIndex = row;
+                self.showYearView.text =_yearArray[yearIndex];
+            }
+            if (component == 1) {
+                monthIndex = row;
             }
         }
             break;
@@ -671,6 +703,8 @@ typedef void(^doneBlock)(NSDate *);
         indexArray = @[@(yearIndex),@(monthIndex),@(dayIndex),@(hourIndex),@(minuteIndex)];
     if (self.datePickerStyle == DateStyleShowYearMonthDay)
         indexArray = @[@(yearIndex),@(monthIndex),@(dayIndex)];
+    if (self.datePickerStyle == DateStyleShowYearMonth)
+        indexArray = @[@(yearIndex),@(monthIndex)];
     if (self.datePickerStyle == DateStyleShowMonthDayHourMinute)
         indexArray = @[@(monthIndex),@(dayIndex),@(hourIndex),@(minuteIndex)];
     if (self.datePickerStyle == DateStyleShowMonthDay)
@@ -717,6 +751,10 @@ typedef void(^doneBlock)(NSDate *);
 -(void)setDoneButtonColor:(UIColor *)doneButtonColor {
     _doneButtonColor = doneButtonColor;
     self.doneBtn.backgroundColor = doneButtonColor;
+}
+
+-(void)setHideBackgroundYearLabel:(BOOL)hideBackgroundYearLabel {
+    _showYearView.textColor = [UIColor clearColor];
 }
 
 @end
