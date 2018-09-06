@@ -44,7 +44,7 @@ typedef void(^doneBlock)(NSDate *);
     NSInteger preRow;
     
     NSDate *_startDate;
-
+    
 }
 @property (weak, nonatomic) IBOutlet UIView *buttomView;
 @property (weak, nonatomic) IBOutlet UILabel *showYearView;
@@ -70,7 +70,7 @@ typedef void(^doneBlock)(NSDate *);
     self = [super init];
     if (self) {
         self = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil] lastObject];
-
+        
         
         self.datePickerStyle = datePickerStyle;
         switch (datePickerStyle) {
@@ -437,61 +437,124 @@ typedef void(^doneBlock)(NSDate *);
 {
     
     switch (self.datePickerStyle) {
-
         case DateStyleShowYearMonthDayHourMinute:{
-            component += 0;
+            
+            if (component == 0) {
+                yearIndex = row;
+                
+                self.showYearView.text =_yearArray[yearIndex];
+            }
+            if (component == 1) {
+                monthIndex = row;
+            }
+            if (component == 2) {
+                dayIndex = row;
+            }
+            if (component == 3) {
+                hourIndex = row;
+            }
+            if (component == 4) {
+                minuteIndex = row;
+            }
+            if (component == 0 || component == 1){
+                [self DaysfromYear:[_yearArray[yearIndex] integerValue] andMonth:[_monthArray[monthIndex] integerValue]];
+                if (_dayArray.count-1<dayIndex) {
+                    dayIndex = _dayArray.count-1;
+                }
+                
+            }
         }
             break;
             
+            
         case DateStyleShowYearMonthDay:{
-            component += 0;
+            
+            if (component == 0) {
+                yearIndex = row;
+                self.showYearView.text =_yearArray[yearIndex];
+            }
+            if (component == 1) {
+                monthIndex = row;
+            }
+            if (component == 2) {
+                dayIndex = row;
+            }
+            if (component == 0 || component == 1){
+                [self DaysfromYear:[_yearArray[yearIndex] integerValue] andMonth:[_monthArray[monthIndex] integerValue]];
+                if (_dayArray.count-1<dayIndex) {
+                    dayIndex = _dayArray.count-1;
+                }
+            }
         }
             break;
             
         case DateStyleShowYearMonth:{
-            component += 0;
+            
+            if (component == 0) {
+                yearIndex = row;
+                self.showYearView.text =_yearArray[yearIndex];
+            }
+            if (component == 1) {
+                monthIndex = row;
+            }
         }
             break;
             
+            
         case DateStyleShowMonthDayHourMinute:{
-            component += 1;
+            
+            
+            if (component == 1) {
+                dayIndex = row;
+            }
+            if (component == 2) {
+                hourIndex = row;
+            }
+            if (component == 3) {
+                minuteIndex = row;
+            }
+            
+            if (component == 0) {
+                
+                [self yearChange:row];
+                [self DaysfromYear:[_yearArray[yearIndex] integerValue] andMonth:[_monthArray[monthIndex] integerValue]];
+                if (_dayArray.count-1<dayIndex) {
+                    dayIndex = _dayArray.count-1;
+                }
+            }
+            [self DaysfromYear:[_yearArray[yearIndex] integerValue] andMonth:[_monthArray[monthIndex] integerValue]];
+            
         }
             break;
             
         case DateStyleShowMonthDay:{
-            component += 1;
+            if (component == 1) {
+                dayIndex = row;
+            }
+            if (component == 0) {
+                
+                [self yearChange:row];
+                [self DaysfromYear:[_yearArray[yearIndex] integerValue] andMonth:[_monthArray[monthIndex] integerValue]];
+                if (_dayArray.count-1<dayIndex) {
+                    dayIndex = _dayArray.count-1;
+                }
+            }
+            [self DaysfromYear:[_yearArray[yearIndex] integerValue] andMonth:[_monthArray[monthIndex] integerValue]];
         }
             break;
             
         case DateStyleShowHourMinute:{
-            component += 3;
+            if (component == 0) {
+                hourIndex = row;
+            }
+            if (component == 1) {
+                minuteIndex = row;
+            }
         }
             break;
             
         default:
             break;
-    }
-    
-    if (component == 0) {
-        yearIndex = row;
-        self.showYearView.text =_yearArray[yearIndex];
-    }
-    if (component == 1) {
-        monthIndex = row;
-    }
-    if (component == 2) {
-        dayIndex = row;
-    }
-    if (component == 3) {
-        hourIndex = row;
-    }
-    if (component == 4) {
-        minuteIndex = row;
-    }
-    
-    [self DaysfromYear:[_yearArray[yearIndex] integerValue] andMonth:[_monthArray[monthIndex] integerValue]];
-    if (_dayArray.count-1<dayIndex) {
-        dayIndex = _dayArray.count-1;
     }
     
     [pickerView reloadAllComponents];
@@ -695,3 +758,4 @@ typedef void(^doneBlock)(NSDate *);
 }
 
 @end
+
