@@ -22,7 +22,7 @@
 
 
 #define MAXYEAR 2099
-#define MINYEAR 1000
+#define MINYEAR 1900
 
 typedef void(^doneBlock)(NSDate *);
 
@@ -218,7 +218,7 @@ typedef void(^doneBlock)(NSDate *);
     }
     //最小限制
     if (!self.minLimitDate) {
-        self.minLimitDate = [NSDate date:@"1000-01-01 00:00" WithFormat:@"yyyy-MM-dd HH:mm"];
+        self.minLimitDate = [NSDate date:@"1900-01-01 00:00" WithFormat:@"yyyy-MM-dd HH:mm"];
     }
 }
 
