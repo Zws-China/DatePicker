@@ -23,7 +23,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
 
-    NSArray *arr = @[@"年-月-日-时-分",@"月-日-时-分",@"年-月-日",@"年-月",@"月-日",@"时-分",@"指定日期2011-11-11 11:11"];
+    NSArray *arr = @[@"年-月-日-时-分",@"月-日-时-分",@"年-月-日",@"年-月",@"月-日",@"时-分",@"年",@"月",@"指定日期2011-11-11 11:11"];
     for (NSInteger i = 0; i < arr.count; i++) {
         UIButton *selectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         selectBtn.frame = CGRectMake(20, 40+50*i, self.view.frame.size.width-40, 40);
@@ -138,6 +138,36 @@
         }
             break;
         case 6:
+        {
+            //年
+            WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYear CompleteBlock:^(NSDate *selectDate) {
+                
+                NSString *dateString = [selectDate stringWithFormat:@"yyyy"];
+                NSLog(@"选择的日期：%@",dateString);
+                [btn setTitle:dateString forState:UIControlStateNormal];
+            }];
+            datepicker.dateLabelColor = randomColor;//年-月-日-时-分 颜色
+            datepicker.datePickerColor = randomColor;//滚轮日期颜色
+            datepicker.doneButtonColor = randomColor;//确定按钮的颜色
+            [datepicker show];
+        }
+            break;
+        case 7:
+        {
+            //月
+            WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowMonth CompleteBlock:^(NSDate *selectDate) {
+                
+                NSString *dateString = [selectDate stringWithFormat:@"MM"];
+                NSLog(@"选择的日期：%@",dateString);
+                [btn setTitle:dateString forState:UIControlStateNormal];
+            }];
+            datepicker.dateLabelColor = randomColor;//年-月-日-时-分 颜色
+            datepicker.datePickerColor = randomColor;//滚轮日期颜色
+            datepicker.doneButtonColor = randomColor;//确定按钮的颜色
+            [datepicker show];
+        }
+            break;
+        case 8:
         {
             //指定日期2011-11-11 11:11
             NSDateFormatter *minDateFormater = [[NSDateFormatter alloc] init];
