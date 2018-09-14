@@ -23,7 +23,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
 
-    NSArray *arr = @[@"年-月-日-时-分",@"月-日-时-分",@"年-月-日",@"年-月",@"月-日",@"时-分",@"年",@"月",@"指定日期2011-11-11 11:11"];
+    NSArray *arr = @[@"年-月-日-时-分",@"月-日-时-分",@"年-月-日",@"年-月",@"月-日",@"时-分",@"年",@"月",@"指定日期2011-11-11 11:11",@"日-时-分"];
     for (NSInteger i = 0; i < arr.count; i++) {
         UIButton *selectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         selectBtn.frame = CGRectMake(20, 40+50*i, self.view.frame.size.width-40, 40);
@@ -188,7 +188,21 @@
             [datepicker show];
         }
             break;
-            
+        case 9:
+        {
+            //日-时-分
+            WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowDayHourMinute CompleteBlock:^(NSDate *selectDate) {
+                
+                NSString *dateString = [selectDate stringWithFormat:@"dd HH:mm"];
+                NSLog(@"选择的日期：%@",dateString);
+                [btn setTitle:dateString forState:UIControlStateNormal];
+            }];
+            datepicker.dateLabelColor = randomColor;//年-月-日-时-分 颜色
+            datepicker.datePickerColor = randomColor;//滚轮日期颜色
+            datepicker.doneButtonColor = randomColor;//确定按钮的颜色
+            [datepicker show];
+        }
+            break;
         default:
             break;
     }

@@ -20,7 +20,8 @@ typedef enum{
     DateStyleShowMonthDay,//月日
     DateStyleShowHourMinute,//时分
     DateStyleShowYear,//年
-    DateStyleShowMonth//月
+    DateStyleShowMonth,//月
+    DateStyleShowDayHourMinute,//日时分
 }WSDateStyle;
 
 
