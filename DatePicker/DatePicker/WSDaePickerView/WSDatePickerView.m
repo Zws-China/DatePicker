@@ -543,9 +543,11 @@ typedef void(^doneBlock)(NSDate *);
             if (component == 0) {
                 yearIndex = row;
                 self.showYearView.text =_yearArray[yearIndex];
+                NSLog(@"yearIndex = %ld",row);
             }
             if (component == 1) {
                 monthIndex = row;
+                NSLog(@"monthIndex = %ld",row);
             }
         }
             break;
@@ -625,8 +627,38 @@ typedef void(^doneBlock)(NSDate *);
     [pickerView reloadAllComponents];
     
     NSString *dateStr = [NSString stringWithFormat:@"%@-%@-%@ %@:%@",_yearArray[yearIndex],_monthArray[monthIndex],_dayArray[dayIndex],_hourArray[hourIndex],_minuteArray[minuteIndex]];
+    switch (self.datePickerStyle) {
+        case DateStyleShowYearMonthDay:
+            dateStr = [NSString stringWithFormat:@"%@-%@-%@",_yearArray[yearIndex],_monthArray[monthIndex],_dayArray[dayIndex]];
+            break;
+        case DateStyleShowYearMonth:
+            dateStr = [NSString stringWithFormat:@"%@-%@",_yearArray[yearIndex],_monthArray[monthIndex]];
+            break;
+        case DateStyleShowMonthDay:
+            dateStr = [NSString stringWithFormat:@"%@-%@-%@",_yearArray[yearIndex],_monthArray[monthIndex],_dayArray[dayIndex]];
+            break;
+        case DateStyleShowHourMinute:
+            dateStr = [NSString stringWithFormat:@"%@:%@",_hourArray[hourIndex],_minuteArray[minuteIndex]];
+            break;
+        case DateStyleShowYear:
+            dateStr = [NSString stringWithFormat:@"%@",_yearArray[yearIndex]];
+
+            break;
+        case DateStyleShowMonth:
+            dateStr = [NSString stringWithFormat:@"%@",_monthArray[monthIndex]];
+
+            break;
+        case DateStyleShowDayHourMinute:
+            dateStr = [NSString stringWithFormat:@"%@ %@:%@",_dayArray[dayIndex],_hourArray[hourIndex],_minuteArray[minuteIndex]];
+
+            break;
+        default:
+            dateStr = [NSString stringWithFormat:@"%@-%@-%@ %@:%@",_yearArray[yearIndex],_monthArray[monthIndex],_dayArray[dayIndex],_hourArray[hourIndex],_minuteArray[minuteIndex]];
+            break;
+    }
+
     
-    self.scrollToDate = [[NSDate date:dateStr WithFormat:@"yyyy-MM-dd HH:mm"] dateWithFormatter:_dateFormatter];
+    self.scrollToDate = [[NSDate date:dateStr WithFormat:_dateFormatter] dateWithFormatter:_dateFormatter];
     
     if ([self.scrollToDate compare:self.minLimitDate] == NSOrderedAscending) {
         self.scrollToDate = self.minLimitDate;
