@@ -2,6 +2,11 @@
 日期选择器,日期时间选择,时间选择器,年月日时分
 
 
+# CocoaPods
+```ruby
+pod 'WSDatePickerView', '~> 1.0.0'
+```
+
 [GitHub: https://github.com/Zws-China/DatePicker](https://github.com/Zws-China/DatePicker)
 
 
