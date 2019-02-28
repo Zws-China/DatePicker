@@ -5,7 +5,7 @@
 
 # CocoaPods
 ```ruby
-pod 'WSDatePickerView', '~> 1.0.0'
+pod 'WSDatePickerView', '~> 1.0'
 ```
 
 
