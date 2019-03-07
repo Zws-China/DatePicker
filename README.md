@@ -4,9 +4,17 @@
 
 
 # CocoaPods
+You want to add pod 'WSDatePickerView', '~> 1.0' similar to the following to your Podfile:
 ```ruby
-pod 'WSDatePickerView'
+target 'MyApp' do
+  pod 'WSDatePickerView', '~> 1.0'
+end
 ```
+Then run a pod install inside your terminal, or from CocoaPods.app.
+Alternatively to give it a test run, run the command:
+pod try WSDatePickerView
+
+
 
 
 # PhotoShoot
