@@ -69,8 +69,7 @@ typedef void(^doneBlock)(NSDate *);
 -(instancetype)initWithDateStyle:(WSDateStyle)datePickerStyle CompleteBlock:(void(^)(NSDate *))completeBlock {
     self = [super init];
     if (self) {
-        self = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil] lastObject];
-        
+        self = [[[NSBundle bundleForClass:[self class]] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil] lastObject];        
         
         self.datePickerStyle = datePickerStyle;
         switch (datePickerStyle) {
