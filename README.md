@@ -4,16 +4,30 @@
 
 
 # CocoaPods
-You want to add pod 'WSDatePickerView', '~> 1.0' similar to the following to your Podfile:
+1: 使用终端进入到你的工程目录
 ```ruby
-target 'MyApp' do
+cd 目标文件夹路径(直接拖过来就行)
+```
+2: 执行pod init 指令
+```ruby
+pod init
+```
+执行成功后会出现一个 Podfile 的文件 这里可以用文本编辑器进行编辑，也可以直接拖到xcode上打开进行编辑。
+3: 编辑Podfile文件 并保存（将pod 'WSDatePickerView', '~> 1.0'加到target与end之间）
+```ruby
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target '你的项目名称' do
+
   pod 'WSDatePickerView', '~> 1.0'
+
 end
 ```
-Then run a pod install inside your terminal, or from CocoaPods.app.
-Alternatively to give it a test run, run the command:
-pod try WSDatePickerView
-
+4: 终端执行命令 pod install
+```ruby
+pod install
+```
 
 
 
