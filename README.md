@@ -4,7 +4,7 @@
 
 
 # CocoaPods
-1: 使用终端进入到你的工程目录
+1: 使用终端进入到你的项目目录
 ```ruby
 cd 目标文件夹路径(直接拖过来就行)
 ```
@@ -29,7 +29,8 @@ end
 ```ruby
 pod install
 ```
-
+5: 打开项目内的的xcworkspace
+用pod 之后的以后就是用 .xcworkspace打开工程就行了.
 
 
 # PhotoShoot
