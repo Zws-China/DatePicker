@@ -13,6 +13,7 @@ cd 目标文件夹路径(直接拖过来就行)
 pod init
 ```
 执行成功后会出现一个 Podfile 的文件 这里可以用文本编辑器进行编辑，也可以直接拖到xcode上打开进行编辑。
+
 3: 编辑Podfile文件 并保存（将pod 'WSDatePickerView', '~> 1.0'加到target与end之间）
 ```ruby
 # Uncomment the next line to define a global platform for your project
